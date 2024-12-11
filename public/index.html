@@ -5,41 +5,113 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />  
     <meta name="viewport" content="width=device-width, initial-scale=1" />  
     <meta name="theme-color" content="#000000" />  
-    <meta  
-      name="description"  
-      content="Todo App - Organize your tasks efficiently"  
-    />  
+
+    <!-- Primary Meta Tags -->  
+    <title>Todo App - Organize Your Tasks</title>  
+    <meta name="title" content="Todo App - Organize Your Tasks">  
+    <meta name="description" content="A powerful todo application to manage your daily tasks, set due dates, and stay organized.">  
+
+    <!-- Open Graph / Facebook -->  
+    <meta property="og:type" content="website">  
+    <meta property="og:url" content="https://yourdomain.com/">  
+    <meta property="og:title" content="Todo App - Organize Your Tasks">  
+    <meta property="og:description" content="A powerful todo application to manage your daily tasks, set due dates, and stay organized.">  
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.png">  
+
+    <!-- Twitter -->  
+    <meta property="twitter:card" content="summary_large_image">  
+    <meta property="twitter:url" content="https://yourdomain.com/">  
+    <meta property="twitter:title" content="Todo App - Organize Your Tasks">  
+    <meta property="twitter:description" content="A powerful todo application to manage your daily tasks, set due dates, and stay organized.">  
+    <meta property="twitter:image" content="%PUBLIC_URL%/og-image.png">  
+
+    <!-- App Icons -->  
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />  
-    <!--  
-      manifest.json provides metadata used when your web app is installed on a  
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/  
-    -->  
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />  
-    <!--  
-      Notice the use of %PUBLIC_URL% in the tags above.  
-      It will be replaced with the URL of the `public` folder during the build.  
-      Only files inside the `public` folder can be referenced from the HTML.  
-    -->  
-    <title>Todo App</title>  
 
-    <!-- Add Tailwind CSS CDN (optional, since we're using the npm package) -->  
-    <script src="https://cdn.tailwindcss.com"></script>  
-
-    <!-- Add custom fonts (optional) -->  
+    <!-- Fonts -->  
+    <link rel="preconnect" href="https://fonts.googleapis.com">  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">  
 
+    <!-- Tailwind CSS -->  
+    <script src="https://cdn.tailwindcss.com"></script>  
+
+    <!-- Custom Styles -->  
     <style>  
+      :root {  
+        --primary-color: #3b82f6;  
+        --secondary-color: #1d4ed8;  
+      }  
+
       body {  
         font-family: 'Inter', sans-serif;  
+        -webkit-font-smoothing: antialiased;  
+        -moz-osx-font-smoothing: grayscale;  
+      }  
+
+      /* Custom scrollbar */  
+      ::-webkit-scrollbar {  
+        width: 8px;  
+      }  
+
+      ::-webkit-scrollbar-track {  
+        background: #f1f1f1;  
+      }  
+
+      ::-webkit-scrollbar-thumb {  
+        background: #888;  
+        border-radius: 4px;  
+      }  
+
+      ::-webkit-scrollbar-thumb:hover {  
+        background: #555;  
+      }  
+
+      /* Loading animation */  
+      .loading-spinner {  
+        border: 3px solid #f3f3f3;  
+        border-top: 3px solid var(--primary-color);  
+        border-radius: 50%;  
+        width: 24px;  
+        height: 24px;  
+        animation: spin 1s linear infinite;  
+      }  
+
+      @keyframes spin {  
+        0% { transform: rotate(0deg); }  
+        100% { transform: rotate(360deg); }  
       }  
     </style>  
+
+    <!-- PWA meta tags -->  
+    <meta name="apple-mobile-web-app-capable" content="yes">  
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">  
+    <meta name="apple-mobile-web-app-title" content="Todo App">  
   </head>  
   <body>  
-    <noscript>You need to enable JavaScript to run this app.</noscript>  
+    <noscript>  
+      <div style="padding: 20px; text-align: center;">  
+        <h1>JavaScript Required</h1>  
+        <p>This app requires JavaScript to function. Please enable JavaScript in your browser settings to continue.</p>  
+      </div>  
+    </noscript>  
+
+    <!-- App Root -->  
     <div id="root"></div>  
-    <!--  
-      This is where your React app will be mounted.  
-      You can add any additional HTML content outside of this div if needed.  
-    -->  
+
+    <!-- Loading State -->  
+    <div id="loading" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.8); display: flex; align-items: center; justify-content: center;">  
+      <div class="loading-spinner"></div>  
+    </div>  
+
+    <!-- Error Boundary -->  
+    <div id="error-boundary" style="display: none; padding: 20px; text-align: center;">  
+      <h2>Oops! Something went wrong</h2>  
+      <p>Please try refreshing the page or contact support if the problem persists.</p>  
+      <button onclick="window.location.reload()" style="padding: 10px 20px; background: var(--primary-color); color: white; border-radius: 4px; margin-top: 10px;">  
+        Refresh Page  
+      </button>  
+    </div>  
   </body>  
 </html>  
