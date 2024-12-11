@@ -1,8 +1,25 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';  
-import { AuthContext } from './AuthContext';  
+// src/components/Contexts/TodoContext.js  
+import { createContext, useContext, useState } from 'react';  
 
-export const TodoContext = createContext(null);  
+const TodoContext = createContext();  
 
-export function TodoProvider({ children }) {  
-  // ... Todo provider code from earlier  
-}  
+export const useTodoContext = () => {  
+  return useContext(TodoContext);  
+};  
+
+export const TodoProvider = ({ children }) => {  
+  const [todos, setTodos] = useState([]);  
+
+  const value = {  
+    todos,  
+    setTodos,  
+  };  
+
+  return (  
+    <TodoContext.Provider value={value}>  
+      {children}  
+    </TodoContext.Provider>  
+  );  
+};  
+
+export default TodoContext;  
