@@ -1,0 +1,7 @@
+txt  
+# Allow all crawlers  
+User-agent: *  
+Allow: /  
+
+# Sitemap location  
+Sitemap: https://ghafli.github.io/todo-app/sitemap.xml
